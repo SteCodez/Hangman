@@ -81,6 +81,24 @@ def get_hangman_stages(remaining_attempts):
         |   / \\
         |
     ------------
+    """, """
+        ------
+        |    |
+        |    O
+        |  --|--o
+        |    |
+        |   / \\
+        |
+    ------------
+    """, """
+        ------
+        |    |
+        |    O
+        | o--|--o
+        |    |
+        |   / \\
+        |
+    ------------
     """]
     return stages[max_attempts - remaining_attempts]
 
