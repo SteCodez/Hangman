@@ -17,7 +17,7 @@ it has one of these. It would could become confusing for the player.
 
 
 
-def print_hidden_words(hidden_word):
+def print_hidden_words(hidden_word, guessed_letters):
     """
     This function pulls the words from the find_valid_words funtion and displays them as a _
     which creates the main function of the hangman game.
@@ -33,6 +33,21 @@ def letter_guessing(guess, hidden_word):
             return True
         else:
             return False
+        
+if letter_guessing:
+    if guess in letter_guessed:
+        print("You have already guessed the letter {}".format(guess))
+    else:
+        print("Yes! The letter {} is part of the secret word".format(guess))
+        guessed_letters += guess
+else:
+    print("No! The letter {} is not part of the secret word".format(guess))
+    remaining_attempts -= 1
+
+print(hangman_stages.get_hangman_stages(remaining_attempts))
+hidden_word(words)
+
+print("You have already guessed this letter!")
 
 print("Welcome! Hope you enjoy this game of hangman :) \n")
 hidden_word = find_valid_words(words)
