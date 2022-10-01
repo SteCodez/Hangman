@@ -3,6 +3,7 @@ import sys
 import hangman_stages
 from words import words
 remaining_attempts = 8
+guessed_letters = ""
 
 def find_valid_words(words):
     """
@@ -17,25 +18,35 @@ it has one of these. It would could become confusing for the player.
 
 
 
-def print_hidden_words(hidden_word, guessed_letters):
+def print_hangman_word(words, guessed_letters):
     """
     This function pulls the words from the find_valid_words funtion and displays them as a _
     which creates the main function of the hangman game.
     """
-    print(" _ " * len(hidden_word)) #changes the words to underscores
-
-def letter_guessing(guess, hidden_word):
+    for letter in words:
+        if letter in guessed_letters:
+            print(" {} ".format(letter), end="")
+        else:
+            print(" _ ", end="")
+    print("\n")
+    
+def get_unique_letters(word):
+    return "".join(set(word))   
+    
+def letter_guessing(guess, words):
     if len(guess) > 1 or not guess.isalpha():
         print("One letter at a time and no numbers please!")
         sys.exit()
     else:
-        if guess in hidden_word:
+        if guess in words:
             return True
         else:
             return False
         
-if letter_guessing:
-    if guess in letter_guessed:
+while remaining_attempts > 0 and len(guessed_letters) < len(get_unique_letters(words)):
+    guess = input("Guess a letter: ")
+    guessed_letters = letter_guessing(guess, words)   
+    if guess in guessed_letters:
         print("You have already guessed the letter {}".format(guess))
     else:
         print("Yes! The letter {} is part of the secret word".format(guess))
@@ -45,13 +56,7 @@ else:
     remaining_attempts -= 1
 
 print(hangman_stages.get_hangman_stages(remaining_attempts))
-hidden_word(words)
-
-print("You have already guessed this letter!")
-
 print("Welcome! Hope you enjoy this game of hangman :) \n")
-hidden_word = find_valid_words(words)
 print(hangman_stages.get_hangman_stages(remaining_attempts))
-print_hidden_words(hidden_word)
-guess = input("Guess a letter:")
-letter_guessed = letter_guessing(guess, hidden_word)
+print_hangman_word(words, guessed_letters)
+words = find_valid_words(words)
