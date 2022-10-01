@@ -11,3 +11,71 @@ it has one of these. It would could become confusing for the player.
     while '-' in word or ' ' in word:
         word = random.choice(words)
     return word
+
+def get_hangman_stages(remaining_attempts):
+    max_attempts = 8
+    stages = ["""
+        ------
+        |    |
+        |
+        |
+        |
+        |
+        |
+    ------------
+    """, """
+        ------
+        |    |
+        |    O
+        |
+        |
+        |
+        |
+    ------------
+    """, """
+        ------
+        |    |
+        |    O
+        |    |
+        |    |
+        |
+        |
+    ------------
+    """, """
+        ------
+        |    |
+        |    O
+        |    |
+        |    |
+        |   /
+        |
+    ------------
+    """, """
+        ------
+        |    |
+        |    O
+        |    |
+        |    |
+        |   / \\
+        |
+    ------------
+    """, """
+        ------
+        |    |
+        |    O
+        |  --|
+        |    |
+        |   / \\
+        |
+    ------------
+    """, """
+        ------
+        |    |
+        |    O
+        |  --|--
+        |    |
+        |   / \\
+        |
+    ------------
+    """]
+    return stages[max_attempts - remaining_attempts]
