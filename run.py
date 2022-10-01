@@ -26,7 +26,7 @@ def print_hidden_words(hidden_word):
 
 def letter_guessing(guess, hidden_word):
     if len(guess) > 1 or not guess.isalpha():
-        print("One letter at a time please!")
+        print("One letter at a time and no numbers please!")
         sys.exit()
     else:
         if guess in hidden_word:
