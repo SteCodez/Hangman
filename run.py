@@ -84,5 +84,11 @@ def get_hangman_stages(remaining_attempts):
     """]
     return stages[max_attempts - remaining_attempts]
 
-def find_valid_words(words):
-    print("_" * len(words))
+def print_hidden_words(hidden_word):
+    print("_" * len(hidden_word))
+
+print("Welcome! Hope you enjoy this game of hangman :) \n")
+hidden_word = find_valid_words(words)
+print_hidden_words(hidden_word)
+
+print(print_hidden_words)
