@@ -1,4 +1,5 @@
 import random
+from hangman_stages import get_hangman_stages
 from words import words
 
 def find_valid_words(words):
@@ -12,95 +13,7 @@ it has one of these. It would could become confusing for the player.
         word = random.choice(words)
     return word
 
-def get_hangman_stages(remaining_attempts):
-    """
-    This function draws the character that will be used for the visual aspect of the game,
-    while also setting the amount of attempts a player will have at the game.
-    """
-    max_attempts = 8
-    stages = ["""
-        ------
-        |    |
-        |
-        |
-        |
-        |
-        |
-    ------------
-    """, """
-        ------
-        |    |
-        |    O
-        |
-        |
-        |
-        |
-    ------------
-    """, """
-        ------
-        |    |
-        |    O
-        |    |
-        |    |
-        |
-        |
-    ------------
-    """, """
-        ------
-        |    |
-        |    O
-        |    |
-        |    |
-        |   /
-        |
-    ------------
-    """, """
-        ------
-        |    |
-        |    O
-        |    |
-        |    |
-        |   / \\
-        |
-    ------------
-    """, """
-        ------
-        |    |
-        |    O
-        |  --|
-        |    |
-        |   / \\
-        |
-    ------------
-    """, """
-        ------
-        |    |
-        |    O
-        |  --|--
-        |    |
-        |   / \\
-        |
-    ------------
-    """, """
-        ------
-        |    |
-        |    O
-        |  --|--o
-        |    |
-        |   / \\
-        |
-    ------------
-    """, """
-        ------
-        |    |
-        |    O
-        | o--|--o
-        |    |
-        |   / \\
-        |
-    ------------
-    """]
-    return stages[max_attempts - remaining_attempts]
+
 
 def print_hidden_words(hidden_word):
     """
@@ -109,8 +22,9 @@ def print_hidden_words(hidden_word):
     """
     print("_" * len(hidden_word)) #changes the words to underscores
 
-print("Welcome! Hope you enjoy this game of hangman :) \n")
-hidden_word = find_valid_words(words)
-print_hidden_words(hidden_word)
+    print("Welcome! Hope you enjoy this game of hangman :) \n")
+    hidden_word = find_valid_words(words)
+    print_hidden_words(hidden_word)
 
+print(hangman_stages.get_hangman_stages(remaining_attempts))
 print(print_hidden_words)
