@@ -1,4 +1,5 @@
 import random
+import sys
 import hangman_stages
 from words import words
 remaining_attempts = 8
@@ -23,7 +24,18 @@ def print_hidden_words(hidden_word):
     """
     print(" _ " * len(hidden_word)) #changes the words to underscores
 
+def letter_guessing(guess, hidden_word):
+    if len(guess) > 1 or not guess.isalpha():
+        print("One letter at a time please!")
+        sys.exit()
+    else:
+        if guess in hidden_word:
+            return True
+        else:
+            return False
+
 print("Welcome! Hope you enjoy this game of hangman :) \n")
 hidden_word = find_valid_words(words)
 print(hangman_stages.get_hangman_stages(remaining_attempts))
 print_hidden_words(hidden_word)
+guess = input("Guess a letter:")
